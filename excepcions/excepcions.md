@@ -1,4 +1,4 @@
- #Excepcions
+ # Excepcions
  
  A partir de la lectura dels enllaços, fer basant-se en la classe Persona que ja teniu feta el següent:
  
