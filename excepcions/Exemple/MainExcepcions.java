@@ -1,4 +1,4 @@
-package excepcions;
+package excepcions.Exemple;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package excepcions;
+package excepcions.Exemple;
 
 public class PersonNotBornException extends Exception {
 
