@@ -1,11 +1,13 @@
 package excepcions.ActivitatExceptions.Control;
 
+import excepcions.ActivitatExceptions.Exceptions.BankAccountException;
 import excepcions.ActivitatExceptions.Model.CompteEstalvi;
 
 public class OperacionsBanc {
 
-    //TODO transferencies entre compte del banc
-    public static void traferencia(CompteEstalvi font, CompteEstalvi desti, float suma) {
 
+    public static boolean verifyDNI(String dni) {
+        //TODO implementar fòrnula de verificació del DNI
+        return true;
     }
 }
