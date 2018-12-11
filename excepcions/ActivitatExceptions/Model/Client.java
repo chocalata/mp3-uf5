@@ -1,5 +1,7 @@
 package excepcions.ActivitatExceptions.Model;
 
+import excepcions.ActivitatExceptions.Control.OperacionsBanc;
+
 public class Client {
     private String Nom;
     private String Cognoms;
@@ -8,7 +10,8 @@ public class Client {
     public Client(String nom, String cognoms, String DNI) {
         Nom = nom;
         Cognoms = cognoms;
-        this.DNI = DNI;
+        if(OperacionsBanc.verifyDNI(DNI)) this.DNI = DNI;
+
     }
 
     public String getNom() {
@@ -33,6 +36,10 @@ public class Client {
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
+    }
+
+    public void transferencia(CompteEstalvi font, CompteEstalvi desti, double suma) {
+        //TODO implementar transferència
     }
 
 }
