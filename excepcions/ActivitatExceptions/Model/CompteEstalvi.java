@@ -1,8 +1,12 @@
 package excepcions.ActivitatExceptions.Model;
 
+import excepcions.ActivitatExceptions.Control.OperacionsBanc;
 import excepcions.ActivitatExceptions.Exceptions.BankAccountException;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static excepcions.ActivitatExceptions.Exceptions.ExceptionMessage.ACCOUNT_OVERDRAFT;
 
 public class CompteEstalvi {
     private String numCompte;
@@ -10,6 +14,7 @@ public class CompteEstalvi {
     private List<Client> llista_usuaris;
 
     public CompteEstalvi(String numCompte) {
+        this.llista_usuaris = new ArrayList<>();
         this.numCompte = numCompte;
         saldo = 0;
     }
@@ -49,8 +54,9 @@ public class CompteEstalvi {
      * @param m
      * @throws BankAccountException
      */
-    public void treure(double m) {
-        saldo -= m;
+    public void treure(double m) throws BankAccountException{
+        if(OperacionsBanc.verifySaldo(saldo, m)) saldo -= m;
+        else throw new BankAccountException(ACCOUNT_OVERDRAFT);
     }
 
     public String getNumCompte() {
@@ -63,5 +69,19 @@ public class CompteEstalvi {
 
     public List<Client> getLlista_usuaris() {
         return llista_usuaris;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CompteEstalvi compteEstalvi = (CompteEstalvi) obj;
+        return this.numCompte.equals((compteEstalvi.getNumCompte()));
+    }
+
+
+
+    public void tranferir(String cuenta, double cantidad) throws BankAccountException{
+        OperacionsBanc.transferencia(this,cantidad,OperacionsBanc.noExisteCuenta(cuenta));
     }
 }

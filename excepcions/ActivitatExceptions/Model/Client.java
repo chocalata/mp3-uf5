@@ -14,7 +14,7 @@ public class Client {
         Nom = nom;
         Cognoms = cognoms;
         if(OperacionsBanc.verifyDNI(DNI)) setDNI(DNI);
-        else new ClientAccountException(WRONG_DNI);
+        else throw new ClientAccountException(WRONG_DNI);
 
     }
 
@@ -46,4 +46,8 @@ public class Client {
         //TODO implementar transferència
     }
 
+    @Override
+    public String toString() {
+        return Nom + " " + Cognoms + " ---> " + DNI;
+    }
 }
